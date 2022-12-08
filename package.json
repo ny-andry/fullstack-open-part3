@@ -1,0 +1,27 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "part3 backend",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ny-andry/fso-part3.git"
+  },
+  "author": "Ny Andry",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ny-andry/fso-part3/issues"
+  },
+  "homepage": "https://github.com/ny-andry/fso-part3#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
