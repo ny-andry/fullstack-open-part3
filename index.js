@@ -1,7 +1,18 @@
 const express = require("express");
+const morgan = require("morgan");
 const app = express();
 
-// J-son parser (Middleware)
+// A middleware is a function that is executed on
+//  incoming requests to an application before the request is passed on to the route handler.
+
+// app.use(morgan("tiny"));
+
+// Create morgan token
+morgan.token('postjson', (request) => {
+  return JSON.stringify(request.body);
+});
+
+app.use(morgan(':method :url :status :res[content-length] - :response-time ms :postjson'));
 app.use(express.json());
 
 let persons = [
