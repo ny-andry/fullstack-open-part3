@@ -1,6 +1,9 @@
 const express = require("express");
 const morgan = require("morgan");
 const app = express();
+const cors = require('cors')
+
+app.use(cors())
 
 // A middleware is a function that is executed on
 //  incoming requests to an application before the request is passed on to the route handler.
