@@ -1,10 +1,16 @@
+// Import the express and morgan libraries
 const express = require("express");
 const morgan = require("morgan");
-const app = express();
-const cors = require('cors')
 
-app.use(cors())
-app.use(express.static('build'))
+// Create an instance of the express app
+const app = express();
+
+// Import the cors library to handle cross-origin requests
+const cors = require("cors");
+
+// Use the cors and express.static middleware
+app.use(cors());
+app.use(express.static("build"));
 
 // A middleware is a function that is executed on
 //  incoming requests to an application before the request is passed on to the route handler.
@@ -12,11 +18,17 @@ app.use(express.static('build'))
 // app.use(morgan("tiny"));
 
 // Create morgan token
-morgan.token('postjson', (request) => {
+// Define a custom morgan token to log the request body as JSON
+morgan.token("postjson", (request) => {
   return JSON.stringify(request.body);
 });
 
-app.use(morgan(':method :url :status :res[content-length] - :response-time ms :postjson'));
+// Use the custom morgan token and the express.json middleware
+app.use(
+  morgan(
+    ":method :url :status :res[content-length] - :response-time ms :postjson"
+  )
+);
 app.use(express.json());
 
 let persons = [
@@ -99,7 +111,7 @@ app.post("/api/persons", (request, response) => {
   }
 });
 
-const PORT = process.env.PORT || 3001
+const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`)
-})
+  console.log(`Server running on port ${PORT}`);
+});
