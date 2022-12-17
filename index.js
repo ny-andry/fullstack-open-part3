@@ -28,20 +28,11 @@ app.use(
 );
 app.use(express.json());
 
-// Get time
-const now = new Date();
-
 // Http requests REST
 app.get("/api/persons", (request, response) => {
   Person.find({}).then((persons) => {
     response.json(persons);
   });
-});
-
-app.get("/info", (request, response) => {
-  response.send(
-    `<p>Phonebook has info for ${persons.length} people</p> ${now}`
-  );
 });
 
 app.get("/api/persons/:id", (request, response) => {
